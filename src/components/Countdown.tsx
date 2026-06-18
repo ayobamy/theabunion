@@ -30,7 +30,7 @@ function TimeUnit({
   reduced: boolean;
 }) {
   return (
-    <div className="flex min-w-[78px] flex-col items-center gap-3 rounded-2xl border border-gold/20 bg-white/5 px-4 py-5 backdrop-blur-md sm:min-w-[120px] sm:px-7 sm:py-7">
+    <div className="flex min-w-[78px] flex-col items-center gap-3 rounded-2xl border border-gold/30 bg-white/5 px-4 py-5 backdrop-blur-xl shadow-2xl ring-1 ring-inset ring-white/10 sm:min-w-[120px] sm:px-7 sm:py-7">
       <span className="relative block h-[1em] overflow-hidden text-[clamp(2.4rem,9vw,4.5rem)] font-semibold leading-none text-gold-light tabular-nums">
         {reduced ? (
           value
