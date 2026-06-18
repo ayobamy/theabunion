@@ -154,13 +154,6 @@ export function Hero() {
           </span>
           <NameLine text={wedding.names.b} />
         </h1>
-
-        <motion.p
-          variants={fadeUp}
-          className="mt-12 text-[0.72rem] font-light uppercase tracking-[0.34em] text-cream/70 sm:text-sm"
-        >
-          {wedding.dateLabel}
-        </motion.p>
       </motion.div>
     </section>
   );
