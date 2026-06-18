@@ -1,0 +1,41 @@
+/* =========================================================
+   Design tokens — Barakah & Ahmad
+   Single source of truth for the palette. Every other file
+   consumes these via var() / Tailwind; no raw colour literals
+   live outside this token layer.
+   Palette: Forest Green · Champagne Gold · Cream White
+   ========================================================= */
+
+:root {
+  /* Core palette */
+  --forest:        #051e15;
+  --forest-deep:   #0c291e;
+  --forest-night:  #0B1A14;
+  --forest-soft:   #2C5341;
+  --gold:          #C6A664;
+  --gold-light:    #E7D2A0;
+  --gold-bright:   #F4E4B8;
+  --gold-deep:     #9C7C3C;
+  --cream:         #FAF7F0;
+  --cream-dim:     #EFE8D8;
+  --white-warm:    #FFF7E4;
+  --ink:           #0B1A14;
+
+  /* The one solid page background — a deep, rich forest green */
+  --bg:            #0C2419;
+
+  /* Derived translucent tones (built from the palette above) */
+  --glow-gold:        rgba(198, 166, 100, 0.12);
+  --glow-gold-strong: rgba(198, 166, 100, 0.22);
+  --gold-12:          rgba(198, 166, 100, 0.12);
+  --gold-22:          rgba(198, 166, 100, 0.22);
+  --gold-40:          rgba(198, 166, 100, 0.40);
+  --gold-60:          rgba(198, 166, 100, 0.60);
+  --shadow-gold-soft: rgba(231, 210, 160, 0.55);
+  --cream-55:         rgba(250, 247, 240, 0.55);
+  --cream-72:         rgba(250, 247, 240, 0.72);
+  --surface-glass:    rgba(255, 255, 255, 0.045);
+  --surface-glass-2:  rgba(255, 255, 255, 0.08);
+  --shadow-1:         rgba(0, 0, 0, 0.25);
+  --shadow-2:         rgba(0, 0, 0, 0.40);
+}

@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+/* Map palette tokens + fonts into Tailwind's theme so utility
+   classes (bg-forest, text-gold, font-serif, …) resolve to the
+   tokens defined in theme.css. */
+@theme inline {
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-forest-night: var(--forest-night);
+  --color-forest-soft: var(--forest-soft);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-bright: var(--gold-bright);
+  --color-gold-deep: var(--gold-deep);
+  --color-cream: var(--cream);
+  --color-cream-dim: var(--cream-dim);
+  --color-white-warm: var(--white-warm);
+
+  --font-serif: var(--font-raleway);
+  --font-sans: var(--font-raleway);
+  --font-amp: var(--font-cormorant);
+  --font-arabic: var(--font-amiri);
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  color: var(--cream);
+  font-family: var(--font-raleway), Arial, Helvetica, sans-serif;
+  background: radial-gradient(
+    120% 95% at 50% -10%,
+    var(--forest-soft) 0%,
+    var(--forest) 30%,
+    var(--forest-deep) 62%,
+    var(--forest-night) 100%
+  );
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Champagne-gold text — a quiet static gradient, no motion. */
+.gold {
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
