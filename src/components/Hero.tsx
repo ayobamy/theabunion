@@ -14,29 +14,45 @@ import { wedding } from "@/lib/wedding";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const stage = {
-  hidden: {},
+  hidden: { scale: 1.05 },
   show: (delay: number) => ({
-    transition: { staggerChildren: 0.12, delayChildren: delay },
+    scale: 1,
+    transition: { staggerChildren: 0.12, delayChildren: delay, duration: 2, ease },
   }),
 };
 
-const slideUp = {
-  hidden: { y: "115%" },
-  show: { y: "0%", transition: { duration: 1.1, ease } },
+const fadeUp = {
+  hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease } },
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 1, ease } },
+const nameStage = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.04 } },
+};
+
+const nameLetterVariant = {
+  hidden: { y: "115%", rotate: 2 },
+  show: { y: "0%", rotate: 0, transition: { duration: 1.1, ease } },
 };
 
 function NameLine({ text }: { text: string }) {
   return (
-    <span className="block overflow-hidden pb-[0.12em]">
-      <motion.span variants={slideUp} className="gold block">
-        {text}
-      </motion.span>
-    </span>
+    <motion.span
+      variants={nameStage}
+      className="flex overflow-hidden pb-[0.12em] justify-center"
+    >
+      {text.split("").map((char, index) => (
+        <motion.span
+          key={index}
+          variants={nameLetterVariant}
+          className="gold block"
+          style={{ whiteSpace: "pre" }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
   );
 }
 
