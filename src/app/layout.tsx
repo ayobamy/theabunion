@@ -39,6 +39,7 @@ const title = `${wedding.names.a} & ${wedding.names.b} — We're Getting Married
 const description = `Join us as we celebrate our union · ${wedding.dateLabel}. ${wedding.hashtags.join(" ")}`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://theabunion.bond"),
   title,
   description,
   openGraph: { title, description, type: "website" },
