@@ -1,6 +1,6 @@
 # The AB Union 💍
 
-A cinematic single-page wedding announcement for **Barakah & Ahmad** —
+A cinematic single-page wedding announcement for **Barokah & Ahmad** —
 September 12, 2026.
 
 Built with Next.js + Tailwind + Framer Motion. Forest green · champagne gold ·

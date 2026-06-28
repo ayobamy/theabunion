@@ -7,7 +7,7 @@
 const weddingDate = new Date(2026, 8, 12, 10, 0, 0);
 
 export const wedding = {
-  names: { a: "Barakah", b: "Ahmad" },
+  names: { a: "Barokah", b: "Ahmad" },
   date: weddingDate,
   dateLabel: "Saturday · September 12, 2026",
   // Shown on the Save-the-Date card; update once confirmed.

@@ -1,5 +1,5 @@
 /* =========================================================
-   Design tokens — Barakah & Ahmad
+   Design tokens — Barokah & Ahmad
    Single source of truth for the palette. Every other file
    consumes these via var() / Tailwind; no raw colour literals
    live outside this token layer.

@@ -43,7 +43,7 @@ function downloadIcs() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "barakah-and-ahmad.ics";
+  a.download = "barokah-and-ahmad.ics";
   a.click();
   URL.revokeObjectURL(url);
 }
