@@ -55,7 +55,7 @@ export function SaveTheDate() {
         <p className="text-[0.62rem] font-light uppercase tracking-[0.5em] text-cream/45 sm:text-xs">
           Save the date
         </p>
-        <p className="gold mt-8 font-serif text-[clamp(3rem,12vw,6rem)] font-light leading-none">
+        <p className="gold mt-8 font-date text-[clamp(3rem,12vw,6rem)] font-light leading-none">
           12.09.26
         </p>
         <p className="mt-6 text-[0.72rem] font-light uppercase tracking-[0.34em] text-cream/70 sm:text-sm">

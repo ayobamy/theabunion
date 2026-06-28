@@ -31,16 +31,16 @@ function TimeUnit({
 }) {
   return (
     <div className="flex min-w-[78px] flex-col items-center gap-3 rounded-2xl border border-gold/30 bg-white/5 px-4 py-5 backdrop-blur-xl shadow-2xl ring-1 ring-inset ring-white/10 sm:min-w-[120px] sm:px-7 sm:py-7">
-      <span className="relative block h-[1em] overflow-hidden text-[clamp(2.4rem,9vw,4.5rem)] font-semibold leading-none text-gold-light tabular-nums">
+      <span className="relative block h-[1em] overflow-hidden font-date text-[clamp(2.6rem,9.5vw,5rem)] font-light leading-none tabular-nums">
         {reduced ? (
-          value
+          <span className="gold block">{value}</span>
         ) : (
           <motion.span
             key={value}
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: "0%", opacity: 1 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="block"
+            className="gold block"
           >
             {value}
           </motion.span>

@@ -20,6 +20,7 @@
   --font-serif: var(--font-raleway);
   --font-sans: var(--font-raleway);
   --font-amp: var(--font-cormorant);
+  --font-date: var(--font-fraunces);
   --font-arabic: var(--font-amiri);
 
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
