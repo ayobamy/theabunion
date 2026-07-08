@@ -6,6 +6,7 @@ import { Marquee } from "@/components/Marquee";
 import { Verse } from "@/components/Verse";
 import { Venue } from "@/components/Venue";
 import { SaveTheDate } from "@/components/SaveTheDate";
+import { Rsvp } from "@/components/Rsvp";
 import { Closing } from "@/components/Closing";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <Verse />
         <Venue />
         <SaveTheDate />
+        <Rsvp />
         <Closing />
       </main>
     </>
