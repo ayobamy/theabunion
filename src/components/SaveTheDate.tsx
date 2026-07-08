@@ -71,14 +71,14 @@ export function SaveTheDate() {
             href={googleCalendarUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-gold/40 bg-white/5 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.28em] text-gold-light backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-gold hover:bg-white/10 hover:shadow-lg hover:shadow-gold/10"
+            className="rounded-full border border-gold/40 bg-white/5 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.28em] text-gold-light backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-gold hover:bg-white/10 hover:shadow-lg hover:shadow-gold/10 active:scale-[0.98]"
           >
             Add to Google Calendar
           </a>
           <button
             type="button"
             onClick={downloadIcs}
-            className="rounded-full border border-cream/20 bg-white/5 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.28em] text-cream/70 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-cream/60 hover:bg-white/10 hover:text-cream hover:shadow-lg hover:shadow-cream/5"
+            className="rounded-full border border-cream/20 bg-white/5 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.28em] text-cream/70 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-cream/60 hover:bg-white/10 hover:text-cream hover:shadow-lg hover:shadow-cream/5 active:scale-[0.98]"
           >
             Download invite
           </button>

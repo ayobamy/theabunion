@@ -55,6 +55,31 @@ body {
   color: transparent;
 }
 
+/* Premium text selection. */
+::selection {
+  background: var(--gold-40);
+  color: var(--white-warm);
+}
+
+/* Accessible keyboard focus — visible gold ring, only for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* Balance headline + quote wrapping so no orphan words are left dangling. */
+h1,
+h2,
+blockquote {
+  text-wrap: balance;
+}
+
+/* Offset smooth-scroll anchors from the top edge. */
+:target {
+  scroll-margin-top: 6rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

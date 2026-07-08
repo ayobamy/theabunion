@@ -55,6 +55,12 @@ export default function RootLayout({
       className={`${raleway.variable} ${cormorant.variable} ${fraunces.variable} ${amiri.variable} h-full antialiased`}
     >
       <body className="relative min-h-full">
+        <a
+          href="#main"
+          className="sr-only rounded-full border border-gold/50 bg-forest-night px-5 py-2 text-sm text-gold-light focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]"
+        >
+          Skip to content
+        </a>
         {/* Subtle noise overlay for film grain texture */}
         <div
           className="pointer-events-none fixed inset-0 z-50 mix-blend-overlay opacity-[0.035]"

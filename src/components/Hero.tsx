@@ -17,13 +17,23 @@ const stage = {
   hidden: { scale: 1.05 },
   show: (delay: number) => ({
     scale: 1,
-    transition: { staggerChildren: 0.12, delayChildren: delay, duration: 2, ease },
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: delay,
+      duration: 2,
+      ease,
+    },
   }),
 };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease } },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 1, ease },
+  },
 };
 
 const nameStage = {
@@ -114,7 +124,7 @@ export function Hero() {
           We&apos;re getting married
         </motion.p>
 
-        <h1 className="mt-6 flex flex-col items-center font-serif font-medium leading-[0.9] tracking-[-0.01em] text-[clamp(3.6rem,17vw,10rem)]">
+        <h1 className="mt-6 flex flex-col items-center font-serif font-medium leading-[0.88] tracking-[-0.03em] text-[clamp(3.8rem,18vw,11rem)]">
           <NameLine text={wedding.names.a} />
           <span className="relative grid place-items-center py-[0.04em]">
             <motion.span

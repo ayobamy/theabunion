@@ -2,6 +2,7 @@ import { Intro } from "@/components/Intro";
 import { GoldDust } from "@/components/GoldDust";
 import { Hero } from "@/components/Hero";
 import { Countdown } from "@/components/Countdown";
+import { Marquee } from "@/components/Marquee";
 import { Verse } from "@/components/Verse";
 import { Venue } from "@/components/Venue";
 import { SaveTheDate } from "@/components/SaveTheDate";
@@ -12,9 +13,10 @@ export default function Home() {
     <>
       <Intro />
       <GoldDust />
-      <main className="relative">
+      <main id="main" className="relative">
         <Hero />
         <Countdown />
+        <Marquee />
         <Verse />
         <Venue />
         <SaveTheDate />
