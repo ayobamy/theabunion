@@ -5,21 +5,38 @@ import { wedding } from "@/lib/wedding";
 
 const EVENT_TITLE = `${wedding.names.a} & ${wedding.names.b}'s Wedding`;
 
-// All-day event on the wedding day (time is announced later).
-function icsDate(d: Date, offsetDays = 0): string {
-  const dt = new Date(d.getFullYear(), d.getMonth(), d.getDate() + offsetDays);
-  const y = dt.getFullYear();
-  const m = String(dt.getMonth() + 1).padStart(2, "0");
-  const day = String(dt.getDate()).padStart(2, "0");
+// Timed event: begins at wedding.date (10:00 AM). The wrap-up hour is
+// an assumption — adjust EVENT_END_HOUR if the day runs longer.
+const EVENT_END_HOUR = 16; // 4:00 PM
+
+function eventEnd(): Date {
+  const end = new Date(wedding.date);
+  end.setHours(EVENT_END_HOUR, 0, 0, 0);
+  return end;
+}
+
+function icsDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
   return `${y}${m}${day}`;
+}
+
+// Floating local time — the celebration is local to Lagos; the Google
+// link pins the zone via ctz.
+function icsDateTime(d: Date): string {
+  const h = String(d.getHours()).padStart(2, "0");
+  const min = String(d.getMinutes()).padStart(2, "0");
+  return `${icsDate(d)}T${h}${min}00`;
 }
 
 function googleCalendarUrl(): string {
   const params = new URLSearchParams({
     action: "TEMPLATE",
     text: EVENT_TITLE,
-    dates: `${icsDate(wedding.date)}/${icsDate(wedding.date, 1)}`,
-    details: wedding.hashtags.join(" "),
+    dates: `${icsDateTime(wedding.date)}/${icsDateTime(eventEnd())}`,
+    ctz: "Africa/Lagos",
+    details: `Begins at ${wedding.celebrationStart} · ${wedding.hashtags.join(" ")}`,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
@@ -31,10 +48,10 @@ function downloadIcs() {
     "PRODID:-//theabunion//wedding//EN",
     "BEGIN:VEVENT",
     `UID:${icsDate(wedding.date)}-abunion@wedding`,
-    `DTSTART;VALUE=DATE:${icsDate(wedding.date)}`,
-    `DTEND;VALUE=DATE:${icsDate(wedding.date, 1)}`,
+    `DTSTART:${icsDateTime(wedding.date)}`,
+    `DTEND:${icsDateTime(eventEnd())}`,
     `SUMMARY:${EVENT_TITLE}`,
-    `DESCRIPTION:${wedding.hashtags.join(" ")}`,
+    `DESCRIPTION:Begins at ${wedding.celebrationStart} · ${wedding.hashtags.join(" ")}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
