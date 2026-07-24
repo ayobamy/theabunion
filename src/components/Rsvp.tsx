@@ -17,11 +17,18 @@ const ERROR_TEXT: Record<string, string> = {
 const inputClass =
   "w-full rounded-xl border border-gold/25 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/35 backdrop-blur-md transition-colors duration-300 focus:border-gold focus:outline-none";
 
+// Coerce the free-text guest field to a valid count (1–12).
+function clampGuests(value: string): number {
+  const n = parseInt(value, 10);
+  if (Number.isNaN(n)) return 1;
+  return Math.max(1, Math.min(12, n));
+}
+
 export function Rsvp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [attending, setAttending] = useState<boolean | null>(null);
-  const [guests, setGuests] = useState(1);
+  const [guests, setGuests] = useState("1");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
@@ -37,12 +44,21 @@ export function Rsvp() {
       const res = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, attending, guests, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          attending,
+          guests: clampGuests(guests),
+          message,
+        }),
       });
       if (!res.ok) {
         const data = (await res.json().catch(() => ({}))) as { error?: string };
         setStatus("error");
-        setError(ERROR_TEXT[data.error ?? ""] ?? "Something went wrong. Please try again.");
+        setError(
+          ERROR_TEXT[data.error ?? ""] ??
+            "Something went wrong. Please try again.",
+        );
         return;
       }
       setStatus("success");
@@ -75,9 +91,16 @@ export function Rsvp() {
               : "Thank you for letting us know — you'll be missed."}
           </p>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="mt-10 flex w-full flex-col gap-5 text-left">
+          <form
+            onSubmit={onSubmit}
+            noValidate
+            className="mt-10 flex w-full flex-col gap-5 text-left"
+          >
             <div className="flex flex-col gap-2">
-              <label htmlFor="rsvp-name" className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60">
+              <label
+                htmlFor="rsvp-name"
+                className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60"
+              >
                 Your name
               </label>
               <input
@@ -119,23 +142,32 @@ export function Rsvp() {
 
             {attending === true && (
               <div className="flex flex-col gap-2">
-                <label htmlFor="rsvp-guests" className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60">
+                <label
+                  htmlFor="rsvp-guests"
+                  className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60"
+                >
                   Number of guests (including you)
                 </label>
                 <input
                   id="rsvp-guests"
-                  type="number"
-                  min={1}
-                  max={12}
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   value={guests}
-                  onChange={(e) => setGuests(Math.max(1, Math.min(12, Number(e.target.value) || 1)))}
+                  onChange={(e) =>
+                    setGuests(e.target.value.replace(/[^0-9]/g, ""))
+                  }
+                  onBlur={() => setGuests(String(clampGuests(guests)))}
                   className={inputClass}
                 />
               </div>
             )}
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="rsvp-email" className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60">
+              <label
+                htmlFor="rsvp-email"
+                className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60"
+              >
                 Email <span className="text-cream/35">(optional)</span>
               </label>
               <input
@@ -151,8 +183,12 @@ export function Rsvp() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="rsvp-message" className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60">
-                A note for the couple <span className="text-cream/35">(optional)</span>
+              <label
+                htmlFor="rsvp-message"
+                className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/60"
+              >
+                A note for the couple{" "}
+                <span className="text-cream/35">(optional)</span>
               </label>
               <textarea
                 id="rsvp-message"
